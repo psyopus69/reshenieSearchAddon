@@ -1,49 +1,86 @@
 #mainSearchBtn {
-	position: absolute;
+    position: absolute;
     padding: 5px;
     text-align: center;
+    box-shadow: inset 1px 2px #408ec5;
     line-height: 25px;
-    height: 25px;
-    width: 50px;
-	right:0;
-	border-radius: 10px;
-	cursor: pointer;
+    height: 34px;
+    width: 99px;
+    right: 2px;
+    letter-spacing: 2;
+    font-weight: bold;
+    border: 1px solid #000000;
+    background-color: #5c6471;
+    color: #ffffff;
+    font-family: verdana;
+    text-shadow: 1px 1px 1px #000000;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+#mainSearchBtn:hover {
+    background-color: #5c6471;
+    box-shadow: #b2eb60 0px -3px inset;
 }
 
 #clearBtn {
-	position: absolute;
-    padding: 5px;
+    position: absolute;
+    /* color: #accfe7; */
+    /* padding: 5px; */
     text-align: center;
-    line-height: 25px;
-    height: 25px;
-    width: 75px;
-    background: #ffd2c5;
-    right: 65px;
-	border-radius: 10px;
-	cursor: pointer;
+    /* line-height: 25px; */
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    background: #accfe7;
+    right: 103px;
+    top: 2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#clearBtn:hover {
+    background: #b2eb60;
 }
 
 .searchReady {
     opacity: 1;
-    background: aquamarine;
+    background: #3d96d6;
+}
+
+.searchReady:hover {
+    background: #accfe7;
 }
 
 .searchBlock {
     opacity: 0.7;
     background: darkred;
+    color: #bababa;
 }
 
 #mainInput {
     height: 35px;
-    width: calc(100% - 150px);
-   /* background: blueviolet;*/
+    width: calc(100% - 100px);
+    border-radius: 4px;
+    letter-spacing: 1px;
+    background: #5b5d67;
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
 }
 
 #mainSearchPanel {
-    width: 80%;
+    border-radius:4px 0;
+    width: 55%;
     margin: auto;
-    background: aliceblue;
-   /* background: #8fb11c;*/
+    opacity: 0.9;
+    background-color: #dae4ed;
+    color: #408ec5;
+    /* background: #73797e; */
+    /* background: #8fb11c;*/
     z-index: 1;
     position: fixed;
     right: 0;
@@ -51,6 +88,40 @@
 }
 
 #answer {
-	/*    width: 350px;*/
-   /* background: blue;*/
+    /*    width: 350px;*/
+    /* background: blue;*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #408ec5;
+    padding-left: 10px;
+    transition: opacity 0s 0.8s ease;
+
 }
+.block-link{
+    margin-top: 5px;
+}
+.link{
+    color: #408ec5;
+   /* text-shadow: 1px 1px 1px #000000;  */
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   line-height: 1.2;
+   position: relative;
+   padding: 0 14px;
+   font-weight: bold;
+   /* text-transform: uppercase; */
+}
+
+.link::after{
+   content: "";
+   height: 100%;
+   min-width: 4px;
+   background: #b2eb60;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   transition: .5s;
+}
+.link:hover:after {
+    min-width: 100%;
+    background: #b2eb60;
+    opacity: .35;
+ }
