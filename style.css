@@ -1,0 +1,56 @@
+#mainSearchBtn {
+	position: absolute;
+    padding: 5px;
+    text-align: center;
+    line-height: 25px;
+    height: 25px;
+    width: 50px;
+	right:0;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+#clearBtn {
+	position: absolute;
+    padding: 5px;
+    text-align: center;
+    line-height: 25px;
+    height: 25px;
+    width: 75px;
+    background: #ffd2c5;
+    right: 65px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.searchReady {
+    opacity: 1;
+    background: aquamarine;
+}
+
+.searchBlock {
+    opacity: 0.7;
+    background: darkred;
+}
+
+#mainInput {
+    height: 35px;
+    width: calc(100% - 150px);
+   /* background: blueviolet;*/
+}
+
+#mainSearchPanel {
+    width: 80%;
+    margin: auto;
+    background: aliceblue;
+   /* background: #8fb11c;*/
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    /*top: 150px;*/
+}
+
+#answer {
+	/*    width: 350px;*/
+   /* background: blue;*/
+}

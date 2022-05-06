@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "content_scripts": [ {
+        "exclude_globs":    [  ],
+        "include_globs":    [ "*" ],
+        "js":               [ "main.js" ],
+        "css":               [ "style.css" ],
+        "matches":          [ "https://reshenie-soft.ru/doc/"
+                            ],
+        "run_at": "document_start"
+    } ],
+    "converted_from_user_script": true,
+    "name":         "Поиск по сайту",
+	"description": "Виртуальная кнопка поиска документации",
+    "version":      "1.0.0.0"
+}
