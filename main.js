@@ -75,7 +75,7 @@ function onSearchClick(substring) {
         //  console.log("\r\n\r\nURL: " + loadTreads[i][1] + "\r\n" + substring.toUpperCase() + "  \r\nIN (i: " + i + ")\r\n " + loadTreads[i][2].toUpperCase());
 
         if (loadTreads[i][3].toUpperCase().includes(substring.toUpperCase())) {
-            console.log("нашлось! " + substring + " по адресу" + loadTreads[i][1] + ", orig: " + loadTreads[i][2]);
+            // console.log("нашлось! " + substring + " по адресу" + loadTreads[i][1] + ", orig: " + loadTreads[i][2]);
             x += 1;
             if (x == 1) {
                 answerBlock.innerHTML += "<p>Результаты поиска:</p>";
@@ -233,7 +233,7 @@ const searchIframe = (frame, text) => {
         for (let i = 0; i < elem.length; i++) {
             // console.log(elem[i].innerText);
             if (elem[i].innerText.toUpperCase().includes(textUpper)) {
-                console.log('Нашёл ' + elem[i].outerHTML);
+                // console.log('Нашёл ' + elem[i].outerHTML);
                 if (textUpper !== '' && textUpper.length > 1) {
                     elem[i].style.backgroundColor = '#fcfc6d';
                 }
