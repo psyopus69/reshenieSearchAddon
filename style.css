@@ -101,7 +101,7 @@
     right: 0;
     /*top: 150px;*/
     width: 30%;
-    margin: 0;
+    margin-left: 1px;
     background-color: rgb(172, 207, 231);
     left: 795px;
     top: 69px;
@@ -166,7 +166,7 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.frame-block {
+.block-frame__iframe {
     position: absolute;
     left: 247px;
     top: 115px;
@@ -174,7 +174,11 @@
     z-index: 3;
     display: block;
     background-color: #ffffff;
-    height: 82%;
+    height: 81%;
     display: none;
 
+}
+
+.highlight {
+    background-color: #fc776d;
 }
