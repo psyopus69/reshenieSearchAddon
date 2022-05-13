@@ -76,10 +76,11 @@ function onSearchClick(substring) {
         let elem = loadTreads[i][3];
         while (elem.search("<!--") > 0) {
             elem = elem.replace(elem.slice(elem.search("<!--"), elem.search("-->") + 3), '');
+            while (elem.search("<a ") > 0) {
+                elem = elem.replace(elem.slice(elem.search("<a "), elem.search("</a>") + 3), '');
+            }
         }
-        while (elem.search("<a ") > 0) {
-            elem = elem.replace(elem.slice(elem.search("<a "), elem.search("</a>") + 3), '');
-        }
+   
         if (elem.toUpperCase().includes(substring.toUpperCase())) {
              //console.log("нашлось! " + substring + " по адресу" + loadTreads[i][1] + ", orig: " + loadTreads[i][2]);
             x += 1;
