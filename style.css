@@ -108,6 +108,8 @@
 }
 
 #answer {
+    display: flex;
+    flex-direction: column;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #408ec5;
     padding-left: 10px;
@@ -117,22 +119,29 @@
     overflow-y: scroll;
     z-index: 9;
 
+
 }
 
 .block-link {
-    margin-top: 5px;
+    margin-top: 10px;
+    word-wrap: break-word;
+    transition: .7s;
+}
+
+.block-link:hover {
+    background-color: #b2eb60;
 }
 
 .link {
     color: #408ec5;
-    font-size: 8pt;
-    /* text-shadow: 1px 1px 1px #000000;  */
+    padding: 3px 0;
+    font-size: 10pt;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.2;
     position: relative;
-    padding: 0 14px;
+    padding: 5px 14px;
     font-weight: bold;
-    /* text-transform: uppercase; */
+    text-align: justify;
 }
 
 .link::after {

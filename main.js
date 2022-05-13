@@ -70,25 +70,16 @@ function onSearchClick(substring) {
     let x = 0;
     answerDiv.innerHTML = "";
     answerBlock.style.paddingBottom = '0';
-    //substring = substring.replaceAll(" ", "%20");
     for (let i = 0; i < loadTreads.length; i++) {
-        //  console.log("\r\n\r\nURL: " + loadTreads[i][1] + "\r\n" + substring.toUpperCase() + "  \r\nIN (i: " + i + ")\r\n " + loadTreads[i][2].toUpperCase());
+
         let elem = loadTreads[i][3];
-        while (elem.search("<!--") > 0) {
-            elem = elem.replace(elem.slice(elem.search("<!--"), elem.search("-->") + 3), '');
-            while (elem.search("<a ") > 0) {
-                elem = elem.replace(elem.slice(elem.search("<a "), elem.search("</a>") + 3), '');
-            }
-        }
-   
         if (elem.toUpperCase().includes(substring.toUpperCase())) {
-             //console.log("нашлось! " + substring + " по адресу" + loadTreads[i][1] + ", orig: " + loadTreads[i][2]);
             x += 1;
             if (x == 1) {
                 answerBlock.innerHTML += "<p>Результаты поиска:</p>";
                 answerBlock.style.paddingBottom = '20px';
             }
-            answerDiv.innerHTML += '<div class="block-link"><a class="link" href="' + window.location.href + encodeURI(loadTreads[i][1].replace(/%20/g, '+')) + "\r\n" + '"target="iframe_link">' + loadTreads[i][2] + ' (' + loadTreads[i][1] + ')</a></div>';
+            answerDiv.innerHTML += '<div class="block-link"><a class="link" href="' + window.location.href + encodeURI(loadTreads[i][1].replace(/%20/g, '+')) + "\r\n" + '"target="iframe_link">' + loadTreads[i][2]  /*+ loadTreads[i][1]*/ + '</a></div>';
             answerBlock.appendChild(answerDiv);
             if (x == 1) {
                 divFrame.style.display = b;
@@ -100,7 +91,6 @@ function onSearchClick(substring) {
     if (x == 0) {
         answerBlock.innerHTML += "<p>По запросу <b>" + substring + "</b> ничего не найдено.</p>";
         answerBlock.style.paddingBottom = '0';
-        // iframe.style.display = "none";
 
     }
 
@@ -108,7 +98,6 @@ function onSearchClick(substring) {
 
 const parseAllUrlds = (documentText) => {
     documentText = documentText.getElementsByTagName("td");
-    // console.log(documentText);
     let massHtml = "";
     for (let i = 0; i < documentText.length; i++) {
         let elem = documentText[i].innerHTML
@@ -122,15 +111,11 @@ const parseAllUrlds = (documentText) => {
     }
     let str = "<script>";
     const allSearchedBtns = massHtml.split(str + "btnL");
-    // console.log(allSearchedBtns);
     for (let i = 0; i < allSearchedBtns.length; i++) {
-        //   console.log(allSearchedBtns[i]);
         if (allSearchedBtns[i].length === 0) continue;
         let splitByBtn2 = allSearchedBtns[i].split(")</script>");
-        //   console.log(splitByBtn2[0]);
         if (splitByBtn2.length < 2) continue;
         let newUrl = splitByBtn2[0].split("\", \"");
-        //console.log("\r\n\r\n*******\r\nName :" + newUrl[1] + "\r\n\r\n");
         let origLinkText = newUrl[1];
         newUrl = newUrl[2].split("\"")[0];
 
@@ -144,20 +129,17 @@ const parseAllUrlds = (documentText) => {
 
     if (parseAllUrldsCounter == 0)
         for (let i = 0; i < loadTreads.length; i++) {
-            //console.log(loadTreads[i][1]);
             getDocumentByUrl(loadTreads[i][1], insertDocument, { threadNum: i });
-            //console.log(window.location.href + encodeURI(loadTreads[i][1].replace(/%20/g, '+')) + "\r\n");
+
         }
 }
 
 const insertDocument = (document, threadNumObj) => {
-    loadTreads[threadNumObj.threadNum][3] = document.getElementsByTagName("html")[0].innerHTML;
-    // console.log("searched!@#" + document.getElementsByTagName("html")[0].innerHTML);
+    loadTreads[threadNumObj.threadNum][3] = document.getElementsByTagName("html")[0].textContent;
     if (--loadThreadsCounter === 0) searchReady();
 };
 
 const searchReady = () => {
-    // alert("searchReady!");
     enableSearch = true;
     searchBtn.classList.remove("searchBlock");
     searchBtn.classList.add("searchReady");
@@ -169,13 +151,18 @@ function startAll() {
     getDocumentByUrl("https://reshenie-soft.ru/doc/left_1.htm", parseAllUrlds, {});
     parseAllUrldsCounter++;
     getDocumentByUrl("https://reshenie-soft.ru/doc/left_2.htm", parseAllUrlds, {});
+    parseAllUrldsCounter++;
+    getDocumentByUrl("https://reshenie-soft.ru/doc/left_4.htm", parseAllUrlds, {});
+    parseAllUrldsCounter++;
+    getDocumentByUrl("https://reshenie-soft.ru/doc/left_5.htm", parseAllUrlds, {});
+    parseAllUrldsCounter++;
+    getDocumentByUrl("https://reshenie-soft.ru/doc/left_6.htm", parseAllUrlds, {});
 }
 
 function getDocumentByUrl(url, callback, argsOb) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            //  console.log( "\r\n" + url + "\r\n");
             callback(xhr.response, argsOb);
         }
     }
@@ -187,7 +174,7 @@ function getDocumentByUrl(url, callback, argsOb) {
 input.oninput = function changeInp() {
     onSearchClick(input.value);
     searchIframe(iframe, input.value.trim())
-    answerBlock.style.display = "block";
+    answerBlock.style.display = b;
 }
 //поиск при нажатии клавиши ENTER
 input.onkeydown = function runScript(e) {
@@ -227,21 +214,21 @@ document.addEventListener("click", (e) => {
         divFrame.style.display = b;
         frame = document.getElementsByTagName('iframe')[0];
         searchIframe(frame, input.value.trim());
-        // let idoc = iframe.contentDocument || iframe.contentWindow.document;
     }
 });
 const searchIframe = (frame, text) => {
     textUpper = text.toUpperCase();
     frame.onload = function () {
         let iframeDoc = frame.contentWindow.document;
-        // iframeDoc.body.style.backgroundColor = 'red';
         elem = iframeDoc.getElementsByTagName('p');
-        // console.log(elem);
         for (let i = 0; i < elem.length; i++) {
-            // console.log(elem[i].innerText);
             if (elem[i].innerText.toUpperCase().includes(textUpper)) {
                 if (textUpper !== '' && textUpper.length > 1) {
+                    if (elem[i].className == 'h1' || elem[i].className == 'text') {
+                        elem[i].style.display = 'table'
+                    }
                     elem[i].style.backgroundColor = '#fcfc6d';
+
                 }
             }
         }
