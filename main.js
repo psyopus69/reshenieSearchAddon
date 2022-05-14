@@ -212,6 +212,7 @@ document.addEventListener("click", (e) => {
     target = e.target
     if (target.className == 'link') {
         divFrame.style.display = b;
+        iframe.style.display = b;
         frame = document.getElementsByTagName('iframe')[0];
         searchIframe(frame, input.value.trim());
     }
