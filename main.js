@@ -234,7 +234,14 @@ const searchIframe = (frame, text) => {
                 }
             }
         }
-
+        elemA = iframeDoc.getElementsByTagName('a');
+        for (let i = 0; i < elemA.length; i++) {
+            if (elemA[i].innerText.toUpperCase().includes(textUpper)) {
+                if (textUpper !== '' && textUpper.length > 1) {
+                    elemA[i].style.backgroundColor = '#fcfc6d';
+                }
+            }
+        }
     }
 
 }
