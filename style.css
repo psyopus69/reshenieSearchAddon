@@ -177,16 +177,14 @@
 
 .block-frame__iframe {
     position: absolute;
-    left: 247px;
+    left: 249px;
     top: 115px;
-    width: 90%;
+    width: calc(100% - 249px);;
     z-index: 3;
     display: block;
     background-color: #ffffff;
     height: 81%;
     display: none;
-    overflow: hidden
-
 }
 
 .highlight {

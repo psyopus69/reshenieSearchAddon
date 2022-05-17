@@ -225,12 +225,11 @@ const searchIframe = (frame, text) => {
         for (let i = 0; i < elem.length; i++) {
             if (elem[i].innerText.toUpperCase().includes(textUpper)) {
                 if (textUpper !== '' && textUpper.length > 1) {
-                    if (elem[i].className == 'h1' || elem[i].className == 'text' ||elem[i].className == 'MsoIndex1')  {
+                    if (elem[i].className == 'h1' || elem[i].className == 'text' ||elem[i].className == 'MsoIndex1'||elem[i].className == 'MsoMessageHeader')  {
                         elem[i].style.display = 'table'
-                        if (elem[i].className == 'MsoIndex1'){elem[i].style.color = '#4157f5'}
+                        if (elem[i].className == 'MsoIndex1' ||elem[i].className == 'MsoMessageHeader'){elem[i].style.color = '#4157f5'}
                     }
                     elem[i].style.backgroundColor = '#fcfc6d';
-
                 }
             }
         }
