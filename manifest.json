@@ -20,6 +20,9 @@
     ],
     "converted_from_user_script": true,
     "name": "Поиск по сайту",
+    "icons": {
+        "128": "icon/favicon-96x96.png"
+    },
     "description": "Виртуальная кнопка поиска документации",
-    "version": "1.0.0.2"
+    "version": "1.4"
 }
